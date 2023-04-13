@@ -1,0 +1,61 @@
+﻿@using FineBlog.Models.ViewModels;
+@model UserVM
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+@{
+    Layout = "_Layout2";
+}
+
+
+<div class="col-lg-8">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-2 d-flex justify-content-center flex-column">
+                @if (Model.ThumbnailUrl == null)
+                {
+                    <img class="img-fluid" src="~/thumbnails/default_image.png" style="object-fit:cover; height:100%; width:100%">
+
+                }
+                else
+                {
+                    <img class="img-fluid" src="~/thumbnails/@Model.ThumbnailUrl" style="object-fit:cover; height:100%; width:100%">
+                }
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                    <p class="text-muted mb-0">@Model.FirstName @Model.LastName</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="mb-0">Username</p>
+                </div>
+                <div class="col-sm-9">
+                    <p class="text-muted mb-0">@Model.UserName</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                    <p class="text-muted mb-0">@Model.Email</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <a asp-action="ResetPassword" asp-controller="User" asp-route-id="@Model.Id" class="btn btn-primary">Reset Password</a>
+    </div>
+</div>
